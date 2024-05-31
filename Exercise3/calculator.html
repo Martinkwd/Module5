@@ -1,0 +1,54 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+
+    <!-- Add -->
+
+    <label>Number1 <input type="text" id="txtNum1Add" /> </label><br />
+    <label>Number2 <input type="text" id="txtNum2Add" /> </label><br />
+    <button onclick="ServerCalculator('Add','lblResultAdd')">Add</button>
+    <label>Result:</label><label id="lblResultAdd"></label><br />
+
+    <!-- Subtraction -->
+
+    <button onclick="ServerCalculator('subtract', 'lblResultSubtract')">
+      Subtraction
+    </button>
+    <label>Result:</label><label id="lblResultSubtract"></label><br />
+
+    <!-- Multiply -->
+
+    <button onclick="ServerCalculator('Multiply', 'lblResultMultiply')">
+      Multiply
+    </button>
+    <label>Result:</label><label id="lblResultMultiply"></label> <br />
+
+    <!-- Divide -->
+
+    <button onclick="ServerCalculator('Divide', 'lblResultDivide' )">
+      Divide
+    </button>
+    <label>Result:</label><label id="lblResultDivide"></label>
+
+    <!-- using fetch -->
+    <script>
+      function ServerCalculator(operation, labelId) {
+        let num1 = document.getElementById("txtNum1Add").value;
+        let num2 = document.getElementById("txtNum2Add").value;
+        fetch(
+          `http://localhost:3000/Calculator/${operation}?num1=${num1}&num2=${num2}`
+        )
+          .then((response) => response.json())
+          .then(
+            (result) =>
+              (document.getElementById(labelId).innerText = result.res)
+          );
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My Project",
+    "description": "eCommerce products",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Products",
+      "description": "for eCommerce visualization of products"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/finalModule": {
+      "get": {
+        "tags": ["eCommerce Service"],
+        "summary": "List of products in chart",
+        "responses": {
+          "200": {
+            "description": "This service allows you to see the eCommerce products and chart"
+          }
+        }
+      }
+    }
+  }
+}
